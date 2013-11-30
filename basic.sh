@@ -25,7 +25,13 @@ txtrst='\e[0m' # Text Reset
 function usage {
 
   # Display usage message on standard error
-  echo "Usage: $APPNAME file" 1>&2
+  echo -e "${bldwht}$APPNAME - A basic shell template${txtrst}" 1>&2
+  echo -e "${bldgrn}Usage${bldwht}: $APPNAME --file=FILE${txtrst}" 1>&2
+  echo -e "${bldylw}Mandatory${bldwht}:${txtrst}" 1>&2
+  echo -e "${bldwht}-f, --file=FILE           do things to FILE${txtrst}" 1>&2
+  echo -e "${bldwht}Options:${txtrst}" 1>&2
+  echo -e "${bldwht}-v                        increase verbosity${txtrst}" 1>&2
+  # echo -e "${bldwht}${txtrst}" 1>&2
 }
 
 function clean_up {
@@ -39,14 +45,13 @@ function clean_up {
 function clean_exit {
 
   # Wrapper for clean_up 0
-
-  
+  clean_up 0
 }
 
 function error_exit {
 
   # Display error message and exit
-  echo "${APPNAME}: ${1:-"Unknown Error"}" 1>&2
+  echo -e "${bldwht}${APPNAME}:${txtrst} ${1:-"Unknown Error"}" 1>&2
   clean_up 1
 }
 
@@ -60,7 +65,7 @@ do
     case $1 in
         -h | --help | -\?)
             usage
-            clean_up 0          # This is not an error, User asked help. We clean_up with exit 0
+            clean_exit          # This is not an error, User asked help. We clean_exit
             ;;
         -f | --file)
             file=$2             # You might want to check if you really got FILE
@@ -80,7 +85,7 @@ do
             break
             ;;
         -*)
-            echo "WARN: Unknown option (ignored): $1" >&2
+            echo -e "${bldylw}WARN${bldwht}: Unknown option (ignored): ${bldred}$1${txtrst}" >&2
             shift
             ;;
         *)  # no more options. Stop while loop
@@ -91,10 +96,9 @@ done
 
 # Suppose some options are required. Check that we got them.
 
-if [ ! "$file" ]; then
-    error_exit "ERROR: option '--file FILE' not given. See --help" >&2
-fi
+[[ ! "$file" ]] && error_exit "${bldred}ERROR${bldwht}: option '${bldylw}--file FILE${bldwht}' not given. See ${bldylw}--help${txtrst}"
 
 # Rest of the program here.
 # If there are input files (for example) that follow the options, they
 # will remain in the "$@" positional paramete
+clean_exit
