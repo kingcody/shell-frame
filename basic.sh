@@ -2,6 +2,25 @@
 # Init some base variables
 APPNAME=$(basename $0)
 
+# Color Vars
+bldblk='\e[1;30m' # Black - Bold
+bldred='\e[1;31m' # Red
+bldgrn='\e[1;32m' # Green
+bldylw='\e[1;33m' # Yellow
+bldblu='\e[1;34m' # Blue
+bldpur='\e[1;35m' # Purple
+bldcyn='\e[1;36m' # Cyan
+bldwht='\e[1;37m' # White
+bakblk='\e[40m' # Black - Background
+bakred='\e[41m' # Red
+bakgrn='\e[42m' # Green
+bakylw='\e[43m' # Yellow
+bakblu='\e[44m' # Blue
+bakpur='\e[45m' # Purple
+bakcyn='\e[46m' # Cyan
+bakwht='\e[47m' # White
+txtrst='\e[0m' # Text Reset
+
 # Init some base functions
 function usage {
 
