@@ -25,12 +25,12 @@ txtrst='\e[0m' # Text Reset
 function usage {
 
   # Display usage message on standard error
-  echo -e "${bldwht}$APPNAME - A basic shell template${txtrst}" 1>&2
-  echo -e "${bldgrn}Usage${bldwht}: $APPNAME --file=FILE${txtrst}" 1>&2
-  echo -e "${bldylw}Mandatory${bldwht}:${txtrst}" 1>&2
-  echo -e "${bldwht}-f, --file=FILE           do things to FILE${txtrst}" 1>&2
-  echo -e "${bldwht}Options:${txtrst}" 1>&2
-  echo -e "${bldwht}-v                        increase verbosity${txtrst}" 1>&2
+  echo -e "${bldwht}$APPNAME - A basic shell template${txtrst}"
+  echo -e "${bldgrn}Usage${bldwht}: $APPNAME --file=FILE${txtrst}"
+  echo -e "${bldylw}Mandatory${bldwht}:${txtrst}"
+  echo -e "${bldwht}-f, --file=FILE           do things to FILE${txtrst}"
+  echo -e "${bldwht}Options:${txtrst}"
+  echo -e "${bldwht}-v                        increase verbosity${txtrst}"
   # echo -e "${bldwht}${txtrst}" 1>&2
 }
 
